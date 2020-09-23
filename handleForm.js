@@ -21,6 +21,9 @@ function handleSubmit(e) {
     })
     .then(text => {
       showMessage(isOk, text);
+      if (isOk) {
+        document.getElementById("review-textarea").value = null;
+      }
     })
     .catch(e => {
       console.error('Error:', e);
