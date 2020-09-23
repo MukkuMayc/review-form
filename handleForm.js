@@ -14,7 +14,6 @@ function handleSubmit(e) {
     method: "post"
   }).then(res => {
     showMessage(res.ok);
-    // res.ok ? showSuccess() : showError();
   })
 }
 
@@ -31,35 +30,6 @@ function showMessage(ok) {
   messageNode.classList.add(ok ? "alert-success" : "alert-danger");
 
   formWrapper.appendChild(messageNode);
-}
-
-function showSuccess() {
-  if (errorNode) {
-    formWrapper.removeChild(errorNode);
-  }
-
-  if (!successNode) {
-    successNode = document.createElement("div");
-    successNode.classList.add("alert", "alert-success");
-    let text = document.createTextNode("Success!");
-    successNode.appendChild(text);
-  }
-
-  formWrapper.appendChild(successNode);
-}
-function showError() {
-  if (!errorNode) {
-    var errorNode = document.createElement("div");
-    errorNode.classList.add("alert", "alert-danger");
-    let text = document.createTextNode("Error!");
-    errorNode.appendChild(text);
-  }
-
-  if (successNode) {
-    formWrapper.removeChild(successNode);
-  }
-
-  formWrapper.appendChild(errorNode);
 }
 
 form.addEventListener("submit", handleSubmit);
